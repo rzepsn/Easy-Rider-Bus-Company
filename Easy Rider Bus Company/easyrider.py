@@ -12,7 +12,8 @@ import sys
 
 stops_dict = {"bus_id": 0, "stop_id": 0, "stop_name": 0, "next_stop": 0, "stop_type": 0, "a_time": 0}
 errors_dict = dict.fromkeys(stops_dict, 0)
-json_string = sys.stdin.read()
+json_string = input()    #for automated site tests
+#json_string = sys.stdin.read() # for manual multiline input
 stops_list = json.loads(json_string)
 
 for key in stops_dict:
@@ -34,7 +35,7 @@ for column_name in ["stop_name", "a_time"]:
 
 for stop_type in stops_dict["stop_type"]:
     error_counter = 0
-    if stop_type not in["", "S", "D", "F"]:
+    if stop_type not in["", "S", "O", "F"]:
         error_counter += 1
     errors_dict["stop_type"] = error_counter
 
